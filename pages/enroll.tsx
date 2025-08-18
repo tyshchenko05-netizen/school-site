@@ -194,7 +194,7 @@ export default function EnrollPage() {
         )}
       </div>
 
-      {/* ===== Модалка курса ===== */}
+      {/* ===== Модалка курса (описание) ===== */}
       {open && selected && (
         <div className="fixed inset-0 z-50">
           <div className="absolute inset-0 bg-black/50" onClick={() => setOpen(false)} />
@@ -208,7 +208,7 @@ export default function EnrollPage() {
                 <button className="p-2 rounded-md hover:bg-gray-100" onClick={() => setOpen(false)}>✕</button>
               </div>
 
-              <div className="p-4 space-y-4 max-h-[70vh] overflow-auto">
+              <div className="p-4 space-y-4 max-h-[75vh] overflow-y-auto" style={{ WebkitOverflowScrolling: "touch" }}>
                 <p className="text-sm leading-relaxed">{selected.desc}</p>
 
                 {selected.program && (
@@ -252,13 +252,19 @@ export default function EnrollPage() {
         </div>
       )}
 
-      {/* ===== ФОРМА ЗАПИСИ (модалка) ===== */}
+      {/* ===== ФОРМА ЗАПИСИ (модалка с прокруткой на мобилках) ===== */}
       {showForm && !formSubmitted && selected && (
-        <div className="fixed inset-0 z-50">
-          <div className="absolute inset-0 bg-black/50" onClick={()=>setShowForm(false)} />
-          <div className="absolute inset-0 flex items-center justify-center p-4">
-            <div className="w-full max-w-2xl rounded-2xl border bg-white shadow-2xl">
-              <div className="p-4 border-b flex items-center justify-between">
+        <div
+          className="fixed inset-0 z-50 overflow-y-auto overscroll-contain"
+          style={{ WebkitOverflowScrolling: "touch" }}
+        >
+          <div className="min-h-full flex items-center justify-center p-4">
+            <div className="fixed inset-0 bg-black/50" onClick={()=>setShowForm(false)} />
+            <div
+              className="relative w-full max-w-2xl rounded-2xl border bg-white shadow-2xl max-h-[85vh] overflow-y-auto"
+              style={{ WebkitOverflowScrolling: "touch" }}
+            >
+              <div className="p-4 border-b flex items-center justify-between sticky top-0 bg-white z-10">
                 <div>
                   <div className="text-lg font-semibold">Запись на курс</div>
                   <div className="text-sm text-gray-500">{selected.title} — {selected.subtitle}</div>
@@ -274,6 +280,7 @@ export default function EnrollPage() {
                 onCancel={()=>setShowForm(false)}
                 onSubmitSuccess={()=>setFormSubmitted(true)}
               />
+              <div className="h-4 md:h-6" /> {/* небольшой нижний отступ */}
             </div>
           </div>
         </div>
@@ -457,7 +464,7 @@ function FormBlock({
         </div>
       </div>
 
-      <div className="flex items-center justify-end gap-2">
+      <div className="flex items-center justify-end gap-2 pb-[calc(env(safe-area-inset-bottom,0)+8px)]">
         <button type="button" className="px-4 py-2 rounded-md border hover:bg-gray-50" onClick={onCancel}>
           Отмена
         </button>
