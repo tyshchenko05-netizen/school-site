@@ -1,18 +1,17 @@
 import Link from "next/link";
 import Head from "next/head";
 
-/** === КОНТАКТЫ и СОЦСЕТИ === */
+/** === Контакты / соцсети === */
 const SOCIALS = {
   telegram: "https://t.me/kodedavinchi86",
   vk: "https://vk.com/kode_da_vinchi?from=groups",
-  instagram: "",
   phone: "+7 (982) 552-44-96",
   phoneHref: "+79825524496",
   email: "tyshchenko05@inbox.ru",
   address: "г.Пыть-Ях, микрорайон 2, дом 10 (вход со стороны дороги)",
 };
 
-/** === ГАЛЕРЕЯ ===  (положи фото в /public/photos/...) */
+/** === Галерея (фото лежат в /public/photos/...) === */
 const GALLERY = [
   "/photos/1.jpg",
   "/photos/2.jpg",
@@ -25,6 +24,9 @@ const GALLERY = [
   "/photos/9.jpg",
 ];
 
+/** === Купюры внутренней валюты (положи файлы в /public/money/) === */
+const MONEY = ["/money/5.png", "/money/10.png", "/money/20.png", "/money/50.png"];
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-white text-gray-900">
@@ -32,7 +34,7 @@ export default function Home() {
         <title>KODE Да Винчи — школа программирования и робототехники</title>
         <meta
           name="description"
-          content="KODE Да Винчи — курсы для детей 3–17: программирование, робототехника, 3D/дизайн, компьютерная грамотность, финансовая грамотность. Офлайн 1–2 раза в неделю по 2 часа."
+          content="KODE Да Винчи — курсы для детей 3–17: программирование, робототехника, 3D/дизайн, компьютерная грамотность и финансовая грамотность. Офлайн 1–2 раза в неделю по 2 часа."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
@@ -47,7 +49,7 @@ export default function Home() {
           <nav className="hidden sm:flex items-center gap-2">
             <a href="#about" className="text-sm px-3 py-2 rounded-md hover:bg-gray-100">О школе</a>
             <a href="#tracks" className="text-sm px-3 py-2 rounded-md hover:bg-gray-100">Направления</a>
-            <a href="#finance" className="text-sm px-3 py-2 rounded-md hover:bg-gray-100">Финграмотность</a>
+            <a href="#finance" className="text-sm px-3 py-2 rounded-md hover:bg-gray-100">Финансы</a>
             <a href="#english" className="text-sm px-3 py-2 rounded-md hover:bg-gray-100">Английский</a>
             <a href="#gallery" className="text-sm px-3 py-2 rounded-md hover:bg-gray-100">Фото</a>
             <a href="#contacts" className="text-sm px-3 py-2 rounded-md hover:bg-gray-100">Контакты</a>
@@ -58,29 +60,42 @@ export default function Home() {
         </div>
       </header>
 
-      {/* СТАРТ ДАТА БАННЕР */}
+      {/* Жёлтый инфо-баннер */}
       <div className="bg-yellow-300 text-purple-900">
         <div className="max-w-6xl mx-auto px-4 py-2 text-center text-sm md:text-base font-semibold">
-          Старт занятий в этом году — <span className="underline">с 13 сентября</span>. Идёт набор групп!
+          Старт занятий — <span className="underline">с 13 сентября</span>. Набор открыт!
         </div>
       </div>
 
       {/* HERO */}
       <section className="bg-gradient-to-br from-purple-700 via-purple-600 to-purple-800 text-white">
-        <div className="max-w-6xl mx-auto px-4 py-10 md:py-14 grid md:grid-cols-2 gap-6 items-center">
+        <div className="max-w-6xl mx-auto px-4 py-10 md:py-14 grid md:grid-cols-2 gap-8 items-center">
           <div>
             <h1 className="text-3xl md:text-5xl font-extrabold leading-tight">
               KODE Да Винчи — школа программирования и робототехники
             </h1>
-            <p className="mt-3 text-white/90">
-              3–17 лет • офлайн 1–2 раза в неделю по 2 часа • проекты: игры, роботы, 3D-модели, приложения.
-            </p>
 
-            {/* Плашки с ключевой инфой */}
+            {/* Разделили «простыню» на 3 пункта */}
+            <ul className="mt-4 grid gap-2 text-white/95">
+              <li className="flex items-start gap-2">
+                <span className="text-yellow-300 mt-1">👧👦</span>
+                <span>Возраст: <b>3–17 лет</b></span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-yellow-300 mt-1">⏰</span>
+                <span>Формат: <b>офлайн, 1–2 раза в неделю по 2 часа</b></span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-yellow-300 mt-1">💻</span>
+                <span>Проекты: <b>игры, роботы, 3D-модели, приложения</b></span>
+              </li>
+            </ul>
+
+            {/* Плашки */}
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
               <Tile title="Ранняя цена до сентября" big="4 400 ₽ / месяц" note="Оплата помесячно" />
-              <Tile title="Скидки" list={["Второе направление — −50%", "Второй ребёнок — −50%"]} />
-              <Tile title="Организация" list={["Расписание формируется под группу", "Английский в конце модулей"]} />
+              <Tile title="Скидки" list={["Второе направление −50%", "Второй ребёнок −50%"]} />
+              <Tile title="Организация" list={["Расписание под группу", "Английский в конце модуля"]} />
             </div>
 
             <div className="mt-6 flex flex-col sm:flex-row gap-3">
@@ -93,99 +108,121 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Фото справа */}
+          {/* Большое фото справа */}
           <div className="rounded-2xl overflow-hidden ring-1 ring-white/20 shadow-2xl">
             <img src={GALLERY[0]} alt="Наши занятия" className="w-full h-full object-cover min-h-[260px]" />
           </div>
         </div>
       </section>
 
-      {/* О ШКОЛЕ */}
-      <section id="about" className="max-w-6xl mx-auto px-4 py-10 space-y-6">
-        <h2 className="text-2xl md:text-3xl font-bold">О школе</h2>
+      {/* О школе — расширенный */}
+      <section id="about" className="max-w-6xl mx-auto px-4 py-12">
+        <h2 className="text-2xl md:text-3xl font-bold mb-4">О школе</h2>
         <p className="text-gray-700">
-          Учим через практику и интерес: каждый модуль — законченный проект и мини-демо для родителей. 
-          Используем современную технику: LEGO/Arduino, пайку, 3D-печать, VR, графические планшеты. 
-          Малые группы и тёплая атмосфера помогают детям уверенно расти в ИТ и инженерии.
+          Учим через практику и интерес: каждый модуль — законченный проект и мини-демо для родителей. Используем
+          современную технику: LEGO/Arduino, пайку, 3D-печать, VR, графические планшеты. Малые группы и тёплая
+          атмосфера помогают детям уверенно расти в ИТ и инженерии.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Info title="Практика > теория" text="Игровой формат, спринты и публичные презентации." />
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <Info title="Практика > теория" text="Игровой формат, спринты и презентации." />
           <Info title="Современная техника" text="LEGO/Arduino, датчики, паяльные станции, 3D-принтеры, VR." />
-          <Info title="Малые группы" text="Возрастные наборы: 3–6, 7–10, 9–13, 14–17. Индивидуальная поддержка." />
+          <Info title="Малые группы" text="Наборы 3–6, 7–10, 9–13, 14–17 с индивидуальной поддержкой." />
+          <Info title="Опытные наставники" text="Практики из IT/инженерии + педагогика и менторство." />
+          <Info title="Результаты" text="Игры, приложения, роботы, 3D-проекты. Участие и призы в конкурсах." />
+          <Info title="Путь ученика" text="От Scratch/конструкторов к Python, Unity, Blender и своим продуктам." />
         </div>
       </section>
 
-      {/* НАПРАВЛЕНИЯ */}
-      <section id="tracks" className="max-w-6xl mx-auto px-4 py-8 space-y-6">
-        <h2 className="text-2xl md:text-3xl font-bold">Направления</h2>
+      {/* Направления */}
+      <section id="tracks" className="max-w-6xl mx-auto px-4 py-10">
+        <h2 className="text-2xl md:text-3xl font-bold mb-4">Направления</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <Track emoji="💻" title="Программирование" text="Scratch, Python, Roblox, Unity, App Inventor" />
+          <Track emoji="💻" title="Программирование" text="Scratch, Python, Roblox Studio, Unity, App Inventor" />
           <Track emoji="🤖" title="Робототехника" text="LEGO/Arduino, сенсоры, пайка, дроны" />
           <Track emoji="🎨" title="3D и дизайн" text="Figma, Blender, 3D-печать, графические планшеты" />
-          <Track emoji="🧠" title="Компьютерная грамотность" text="ПК, Word/Excel/PowerPoint, безопасность" />
+          <Track emoji="🧠" title="Компьютерная грамотность 7–10" text="ПК, Word/Excel/PowerPoint, браузер, безопасность" />
         </div>
-        <div className="pt-2">
+        <div className="pt-3">
           <Link href="/enroll" className="inline-block px-5 py-3 rounded-md bg-gray-900 text-white hover:opacity-90">
             Перейти к форме записи
           </Link>
         </div>
       </section>
 
-      {/* ЦЕНЫ/СКИДКИ + ОРГАНИЗАЦИЯ */}
-      <section className="max-w-6xl mx-auto px-4 py-8">
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="rounded-2xl border p-5 bg-white">
-            <h3 className="text-xl font-bold mb-2">Стоимость и скидки</h3>
-            <ul className="text-sm space-y-2">
-              <li>• Ранняя цена до сентября: <b>4 400 ₽ / месяц</b></li>
-              <li>• Скидки не суммируются: либо <b>второй ребёнок −50%</b>, либо <b>второе направление −50%</b></li>
-              <li>• Оплата помесячно, можно начать в любой момент</li>
-            </ul>
-          </div>
-          <div className="rounded-2xl border p-5 bg-white">
-            <h3 className="text-xl font-bold mb-2">Как проходят занятия</h3>
-            <ul className="text-sm space-y-2">
-              <li>• 1–2 раза в неделю по 2 часа</li>
-              <li>• Группы 6–8 человек, по возрастам</li>
-              <li>• По окончании каждого модуля — мини-демо и сертификаты</li>
-            </ul>
-          </div>
+      {/* Стоимость/организация */}
+      <section className="max-w-6xl mx-auto px-4 py-8 grid md:grid-cols-2 gap-6">
+        <div className="rounded-2xl border p-5 bg-white">
+          <h3 className="text-xl font-bold mb-2">Стоимость и скидки</h3>
+          <ul className="text-sm space-y-2">
+            <li>• Ранняя цена до сентября: <b>4 400 ₽ / месяц</b></li>
+            <li>• Скидки не суммируются: <b>второй ребёнок −50%</b> или <b>второе направление −50%</b></li>
+            <li>• Оплата помесячно, можно начать в любой момент</li>
+          </ul>
         </div>
-      </section>
-
-      {/* ФИНАНСОВАЯ ГРАМОТНОСТЬ */}
-      <section id="finance" className="max-w-6xl mx-auto px-4 py-10">
-        <div className="rounded-2xl border p-6 bg-gradient-to-br from-yellow-50 to-white">
-          <h2 className="text-2xl md:text-3xl font-bold mb-3">Финансовая грамотность — учимся зарабатывать и разумно тратить</h2>
-          <p className="text-gray-700">
-            На занятиях дети получают «внутришкольную валюту» за активность, проекты, помощь команде. 
-            Эту валюту можно потратить в нашем <b>Telegram-магазине</b> на полезные гаджеты и технику 
-            (мышки, наушники, наборы для пайки, мини-роботы и т.д.). Так ребёнок видит прямую связь между 
-            усилиями и результатом, учится планировать бюджет и принимать взвешенные решения.
-          </p>
-          <div className="mt-3 text-sm text-gray-600">
-            Ценность: формируем здоровое отношение к деньгам, навыки планирования и мотивацию доводить проекты до конца.
-          </div>
-        </div>
-      </section>
-
-      {/* АНГЛИЙСКИЙ ЯЗЫК */}
-      <section id="english" className="max-w-6xl mx-auto px-4 py-10">
-        <div className="rounded-2xl border p-6 bg-white">
-          <h2 className="text-2xl md:text-3xl font-bold mb-3">Новинка: английский в конце каждого модуля</h2>
-          <p className="text-gray-700">
-            С <b>сентября</b> в каждой группе по завершении модуля проводим мини-уроки английского по тематике курса 
-            (команды, интерфейсы, термины). Это помогает детям:
-          </p>
-          <ul className="mt-2 text-gray-700 list-disc list-inside space-y-1">
-            <li>свободнее ориентироваться в англоязычных интерфейсах (Roblox, Python-библиотеки и др.);</li>
-            <li>быстрее искать и понимать документацию и туториалы;</li>
-            <li>уверенно презентовать проект, используя простые технические фразы.</li>
+        <div className="rounded-2xl border p-5 bg-white">
+          <h3 className="text-xl font-bold mb-2">Как проходят занятия</h3>
+          <ul className="text-sm space-y-2">
+            <li>• 1–2 раза в неделю по 2 часа</li>
+            <li>• Группы 6–8 человек, набор по возрастам</li>
+            <li>• По окончании каждого модуля — мини-демо и сертификаты</li>
           </ul>
         </div>
       </section>
 
-      {/* ЦИФРЫ */}
+      {/* Финансовая грамотность с купюрами */}
+      <section id="finance" className="max-w-6xl mx-auto px-4 py-10">
+        <div className="rounded-2xl border p-6 bg-gradient-to-br from-yellow-50 to-white">
+          <div className="grid md:grid-cols-2 gap-6 items-center">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold mb-3">
+                Финансовая грамотность — учимся зарабатывать и разумно тратить
+              </h2>
+              <p className="text-gray-700">
+                На занятиях дети получают «внутришкольную валюту» за активность, проекты, помощь команде. Эту валюту
+                можно потратить в нашем <b>Telegram-магазине</b> на полезные гаджеты и технику (мышки, наушники, наборы
+                для пайки, мини-роботы и т.д.). Так ребёнок видит связь между усилиями и результатом, учится планировать
+                бюджет и принимать взвешенные решения.
+              </p>
+              <p className="mt-3 text-sm text-gray-600">
+                Ценность: формируем здоровое отношение к деньгам, навыки планирования и мотивацию доводить проекты до конца.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              {MONEY.map((src) => (
+                <div key={src} className="rounded-xl overflow-hidden border bg-white">
+                  <img src={src} alt="Давинчи-билеты" className="w-full h-full object-cover" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Английский в конце модуля */}
+      <section id="english" className="max-w-6xl mx-auto px-4 py-10">
+        <div className="rounded-2xl border p-6 bg-white">
+          <div className="grid md:grid-cols-2 gap-6 items-center">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold mb-3">Новинка: английский в конце каждого модуля</h2>
+              <p className="text-gray-700">
+                С <b>сентября</b> в каждой группе по завершении модуля проводим мини-уроки английского по тематике
+                курса (команды, интерфейсы, термины). Это помогает детям:
+              </p>
+              <ul className="mt-2 text-gray-700 list-disc list-inside space-y-1">
+                <li>свободнее ориентироваться в англоязычных интерфейсах (Roblox, Python-библиотеки и др.);</li>
+                <li>быстрее искать и понимать документацию и туториалы;</li>
+                <li>увереннее презентовать проект, используя простые технические фразы.</li>
+              </ul>
+            </div>
+            <div className="rounded-xl overflow-hidden bg-gray-50 border">
+              {/* Положи подходящую картинку сюда: /public/images/english.png */}
+              <img src="/images/english.png" alt="English + IT" className="w-full h-full object-cover" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Цифры */}
       <section id="numbers" className="max-w-6xl mx-auto px-4 py-8">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">Цифры и факты</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -196,7 +233,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ФОТО */}
+      {/* Фото-галерея */}
       <section id="gallery" className="max-w-6xl mx-auto px-4 py-8">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">Наши занятия</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -221,7 +258,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* КОНТАКТЫ */}
+      {/* Контакты */}
       <section id="contacts" className="max-w-6xl mx-auto px-4 py-10">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">Контакты</h2>
         <div className="grid md:grid-cols-2 gap-6">
@@ -236,9 +273,8 @@ export default function Home() {
             </div>
             <div className="text-sm mt-3">Адрес: {SOCIALS.address}</div>
             <div className="mt-3 flex flex-wrap gap-2">
-              {SOCIALS.telegram && <a href={SOCIALS.telegram} target="_blank" rel="noreferrer" className="px-4 py-2 rounded-md bg-gray-900 text-white hover:opacity-90">Telegram</a>}
-              {SOCIALS.vk && <a href={SOCIALS.vk} target="_blank" rel="noreferrer" className="px-4 py-2 rounded-md border hover:bg-gray-50">VK</a>}
-              {SOCIALS.instagram && <a href={SOCIALS.instagram} target="_blank" rel="noreferrer" className="px-4 py-2 rounded-md border hover:bg-gray-50">Instagram</a>}
+              <a href={SOCIALS.telegram} target="_blank" rel="noreferrer" className="px-4 py-2 rounded-md bg-gray-900 text-white hover:opacity-90">Telegram</a>
+              <a href={SOCIALS.vk} target="_blank" rel="noreferrer" className="px-4 py-2 rounded-md border hover:bg-gray-50">VK</a>
             </div>
           </div>
           <iframe
@@ -261,7 +297,7 @@ export default function Home() {
   );
 }
 
-/* — МАЛЕНЬКИЕ КОМПОНЕНТЫ — */
+/* — Мелкие компоненты — */
 function Tile({ title, big, note, list }: { title: string; big?: string; note?: string; list?: string[] }) {
   return (
     <div className="rounded-2xl bg-white/10 p-4 backdrop-blur-md border border-white/20">
