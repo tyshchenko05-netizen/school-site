@@ -65,6 +65,11 @@ export default function HomePage() {
   return (
     <>
       <Head>
+        <meta name="color-scheme" content="light" />
+        <meta name="supported-color-schemes" content="light" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
         <title>KODE Да Винчи — школа программирования и робототехники для детей 3–17 лет</title>
         <meta
           name="description"
