@@ -70,6 +70,7 @@ export default function HomePage() {
           name="description"
           content="Игры, роботы, 3D-модели, мобильные приложения. Офлайн 1–2 раза в неделю по 2 часа. Возрастные группы 3–6, 7–10, 9–13, 14–17. Старт с 13 сентября."
         />
+        <meta name="color-scheme" content="light only" />
       </Head>
 
       <main className="min-h-screen bg-white">
