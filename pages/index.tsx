@@ -303,14 +303,14 @@ function CardDir({ emoji, title, items }: { emoji: string; title: string; items:
     <div className="rounded-2xl border p-5 bg-white hover:shadow-xl transition">
       <div className="flex items-center gap-3">
         <div className="text-2xl">{emoji}</div>
-        <div className="font-semibold">{title}</div>
+        <div className="font-semibold text-gray-900">{title}</div> 
       </div>
-      <ul className="mt-3 text-sm text-gray-600 space-y-1 list-disc pl-6">
+      <ul className="mt-3 text-sm text-gray-800 space-y-1 list-disc pl-6">
         {items.map((i) => (
           <li key={i}>{i}</li>
         ))}
       </ul>
-      <Link href="/enroll" className="mt-4 inline-block text-sm font-semibold underline">
+      <Link href="/enroll" className="mt-4 inline-block text-sm font-semibold text-gray-900 underline">
         Смотреть курсы →
       </Link>
     </div>

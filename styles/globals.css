@@ -1,4 +1,18 @@
 @import "tailwindcss";
+/* === Форсим только светлую тему === */
+:root {
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background: #ffffff !important;
+    color: #111111 !important;
+  }
+  img, video, canvas {
+    filter: none !important; /* убирает авто-тусклость на iPhone */
+  }
+}
 
 :root {
   --background: #ffffff;
