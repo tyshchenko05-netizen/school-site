@@ -1,342 +1,239 @@
-import Link from "next/link";
+// pages/index.tsx
 import Head from "next/head";
+import Link from "next/link";
 
-/** === Контакты / соцсети === */
-const SOCIALS = {
-  telegram: "https://t.me/kodedavinchi86",
-  vk: "https://vk.com/kode_da_vinchi?from=groups",
-  phone: "+7 (982) 552-44-96",
-  phoneHref: "+79825524496",
-  email: "tyshchenko05@inbox.ru",
-  address: "г.Пыть-Ях, микрорайон 2, дом 10 (вход со стороны дороги)",
-};
+export default function HomePage() {
+  const brand = {
+    grad: "bg-gradient-to-br from-purple-700 via-purple-600 to-purple-800",
+    accentText: "text-yellow-300",
+    accentBg: "bg-yellow-300 text-purple-900",
+    ring: "ring-2 ring-yellow-300",
+  };
 
-/** === Галерея (фото лежат в /public/photos/...) === */
-const GALLERY = [
-  "/photos/1.jpg",
-  "/photos/2.jpg",
-  "/photos/3.jpg",
-  "/photos/4.jpg",
-  "/photos/5.jpg",
-  "/photos/6.jpg",
-  "/photos/7.jpg",
-  "/photos/8.jpg",
-  "/photos/9.jpg",
-];
-
-/** === Купюры внутренней валюты (положи файлы в /public/money/) === */
-const MONEY = ["/money/5.png", "/money/10.png", "/money/20.png", "/money/50.png"];
-
-export default function Home() {
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <>
       <Head>
-        <title>KODE Да Винчи — школа программирования и робототехники</title>
+        <title>KODE Да Винчи — школа программирования и робототехники для детей 3–17 лет</title>
         <meta
           name="description"
-          content="KODE Да Винчи — курсы для детей 3–17: программирование, робототехника, 3D/дизайн, компьютерная грамотность и финансовая грамотность. Офлайн 1–2 раза в неделю по 2 часа."
+          content="Игры, роботы, 3D-модели, мобильные приложения. Офлайн 1–2 раза в неделю по 2 часа. Возрастные группы 3–6, 7–10, 9–13, 14–17."
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      {/* NAV */}
-      <header className="sticky top-0 z-40 bg-white/90 backdrop-blur border-b">
-        <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
-          <Link href="/" className="font-extrabold tracking-tight">
-            <span className="text-purple-700">KODE</span>{" "}
-            <span className="text-yellow-500">Да Винчи</span>
-          </Link>
-          <nav className="hidden sm:flex items-center gap-2">
-            <a href="#about" className="text-sm px-3 py-2 rounded-md hover:bg-gray-100">О школе</a>
-            <a href="#tracks" className="text-sm px-3 py-2 rounded-md hover:bg-gray-100">Направления</a>
-            <a href="#finance" className="text-sm px-3 py-2 rounded-md hover:bg-gray-100">Финансы</a>
-            <a href="#english" className="text-sm px-3 py-2 rounded-md hover:bg-gray-100">Английский</a>
-            <a href="#gallery" className="text-sm px-3 py-2 rounded-md hover:bg-gray-100">Фото</a>
-            <a href="#contacts" className="text-sm px-3 py-2 rounded-md hover:bg-gray-100">Контакты</a>
-          </nav>
-          <Link href="/enroll" className="px-3 py-2 rounded-md bg-purple-700 text-white text-sm font-semibold hover:opacity-90">
-            Записаться
-          </Link>
-        </div>
-      </header>
+      <main className="min-h-screen bg-white">
+        {/* HERO — фото детей за роботами */}
+        <section className={`${brand.grad} text-white`}>
+          <div className="max-w-6xl mx-auto px-4 py-10 md:py-16">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h1 className="text-3xl md:text-5xl font-extrabold leading-tight">
+                  KODE Да Винчи — IT, <span className={brand.accentText}>роботы</span>, игры и 3D
+                </h1>
+                <p className="mt-4 text-white/90">
+                  Для детей 3–17 лет • офлайн 1–2 раза в неделю по 2 часа • проекты: игры, роботы, 3D‑модели, приложения.
+                </p>
 
-      {/* Жёлтый инфо-баннер */}
-      <div className="bg-yellow-300 text-purple-900">
-        <div className="max-w-6xl mx-auto px-4 py-2 text-center text-sm md:text-base font-semibold">
-          Старт занятий — <span className="underline">с 13 сентября</span>. Набор открыт!
-        </div>
-      </div>
-
-      {/* HERO */}
-      <section className="bg-gradient-to-br from-purple-700 via-purple-600 to-purple-800 text-white">
-        <div className="max-w-6xl mx-auto px-4 py-10 md:py-14 grid md:grid-cols-2 gap-8 items-center">
-          <div>
-            <h1 className="text-3xl md:text-5xl font-extrabold leading-tight">
-              KODE Да Винчи — школа программирования и робототехники
-            </h1>
-
-            {/* Разделили «простыню» на 3 пункта */}
-            <ul className="mt-4 grid gap-2 text-white/95">
-              <li className="flex items-start gap-2">
-                <span className="text-yellow-300 mt-1">👧👦</span>
-                <span>Возраст: <b>3–17 лет</b></span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-yellow-300 mt-1">⏰</span>
-                <span>Формат: <b>офлайн, 1–2 раза в неделю по 2 часа</b></span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-yellow-300 mt-1">💻</span>
-                <span>Проекты: <b>игры, роботы, 3D-модели, приложения</b></span>
-              </li>
-            </ul>
-
-            {/* Плашки */}
-            <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <Tile title="Ранняя цена до сентября" big="4 400 ₽ / месяц" note="Оплата помесячно" />
-              <Tile title="Скидки" list={["Второе направление −50%", "Второй ребёнок −50%"]} />
-              <Tile title="Организация" list={["Расписание под группу", "Английский в конце модуля"]} />
-            </div>
-
-            <div className="mt-6 flex flex-col sm:flex-row gap-3">
-              <Link href="/enroll" className="px-5 py-3 rounded-md bg-yellow-300 text-purple-900 font-semibold text-center hover:opacity-90">
-                Подобрать курс и записаться
-              </Link>
-              <a href="#about" className="px-5 py-3 rounded-md border border-white/30 text-center hover:bg-white/10">
-                Узнать о школе
-              </a>
-            </div>
-          </div>
-
-          {/* Большое фото справа */}
-          <div className="rounded-2xl overflow-hidden ring-1 ring-white/20 shadow-2xl">
-            <img src={GALLERY[0]} alt="Наши занятия" className="w-full h-full object-cover min-h-[260px]" />
-          </div>
-        </div>
-      </section>
-
-      {/* О школе — расширенный */}
-      <section id="about" className="max-w-6xl mx-auto px-4 py-12">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">О школе</h2>
-        <p className="text-gray-700">
-          Учим через практику и интерес: каждый модуль — законченный проект и мини-демо для родителей. Используем
-          современную технику: LEGO/Arduino, пайку, 3D-печать, VR, графические планшеты. Малые группы и тёплая
-          атмосфера помогают детям уверенно расти в ИТ и инженерии.
-        </p>
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Info title="Практика > теория" text="Игровой формат, спринты и презентации." />
-          <Info title="Современная техника" text="LEGO/Arduino, датчики, паяльные станции, 3D-принтеры, VR." />
-          <Info title="Малые группы" text="Наборы 3–6, 7–10, 9–13, 14–17 с индивидуальной поддержкой." />
-          <Info title="Опытные наставники" text="Практики из IT/инженерии + педагогика и менторство." />
-          <Info title="Результаты" text="Игры, приложения, роботы, 3D-проекты. Участие и призы в конкурсах." />
-          <Info title="Путь ученика" text="От Scratch/конструкторов к Python, Unity, Blender и своим продуктам." />
-        </div>
-      </section>
-
-      {/* Направления */}
-      <section id="tracks" className="max-w-6xl mx-auto px-4 py-10">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">Направления</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <Track emoji="💻" title="Программирование" text="Scratch, Python, Roblox Studio, Unity, App Inventor" />
-          <Track emoji="🤖" title="Робототехника" text="LEGO/Arduino, сенсоры, пайка, дроны" />
-          <Track emoji="🎨" title="3D и дизайн" text="Figma, Blender, 3D-печать, графические планшеты" />
-          <Track emoji="🧠" title="Компьютерная грамотность 7–10" text="ПК, Word/Excel/PowerPoint, браузер, безопасность" />
-        </div>
-        <div className="pt-3">
-          <Link href="/enroll" className="inline-block px-5 py-3 rounded-md bg-gray-900 text-white hover:opacity-90">
-            Перейти к форме записи
-          </Link>
-        </div>
-      </section>
-
-      {/* Стоимость/организация */}
-      <section className="max-w-6xl mx-auto px-4 py-8 grid md:grid-cols-2 gap-6">
-        <div className="rounded-2xl border p-5 bg-white">
-          <h3 className="text-xl font-bold mb-2">Стоимость и скидки</h3>
-          <ul className="text-sm space-y-2">
-            <li>• Ранняя цена до сентября: <b>4 400 ₽ / месяц</b></li>
-            <li>• Скидки не суммируются: <b>второй ребёнок −50%</b> или <b>второе направление −50%</b></li>
-            <li>• Оплата помесячно, можно начать в любой момент</li>
-          </ul>
-        </div>
-        <div className="rounded-2xl border p-5 bg-white">
-          <h3 className="text-xl font-bold mb-2">Как проходят занятия</h3>
-          <ul className="text-sm space-y-2">
-            <li>• 1–2 раза в неделю по 2 часа</li>
-            <li>• Группы 6–8 человек, набор по возрастам</li>
-            <li>• По окончании каждого модуля — мини-демо и сертификаты</li>
-          </ul>
-        </div>
-      </section>
-
-      {/* Финансовая грамотность с купюрами */}
-      <section id="finance" className="max-w-6xl mx-auto px-4 py-10">
-        <div className="rounded-2xl border p-6 bg-gradient-to-br from-yellow-50 to-white">
-          <div className="grid md:grid-cols-2 gap-6 items-center">
-            <div>
-              <h2 className="text-2xl md:text-3xl font-bold mb-3">
-                Финансовая грамотность — учимся зарабатывать и разумно тратить
-              </h2>
-              <p className="text-gray-700">
-                На занятиях дети получают «внутришкольную валюту» за активность, проекты, помощь команде. Эту валюту
-                можно потратить в нашем <b>Telegram-магазине</b> на полезные гаджеты и технику (мышки, наушники, наборы
-                для пайки, мини-роботы и т.д.). Так ребёнок видит связь между усилиями и результатом, учится планировать
-                бюджет и принимать взвешенные решения.
-              </p>
-              <p className="mt-3 text-sm text-gray-600">
-                Ценность: формируем здоровое отношение к деньгам, навыки планирования и мотивацию доводить проекты до конца.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              {MONEY.map((src) => (
-                <div key={src} className="rounded-xl overflow-hidden border bg-white">
-                  <img src={src} alt="Давинчи-билеты" className="w-full h-full object-cover" />
+                <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div className="rounded-2xl bg-white/10 p-4 border border-white/20">
+                    <div className="text-sm opacity-90">Ранняя цена до сентября</div>
+                    <div className={`text-2xl font-bold ${brand.accentText}`}>4 400 ₽ / мес</div>
+                    <div className="text-xs opacity-80">Оплата помесячно</div>
+                  </div>
+                  <div className="rounded-2xl bg-white/10 p-4 border border-white/20">
+                    <div className="text-sm opacity-90">Акции</div>
+                    <ul className="text-sm mt-1 space-y-1">
+                      <li>• Второе направление — <b>-50%</b></li>
+                      <li>• Второй ребёнок — <b>-50%</b></li>
+                    </ul>
+                  </div>
+                  <div className="rounded-2xl bg-white/10 p-4 border border-white/20">
+                    <div className="text-sm opacity-90">Старт занятий</div>
+                    <div className="text-lg font-bold">с 13 сентября</div>
+                    <div className="text-xs opacity-80">Расписание после набора группы</div>
+                  </div>
                 </div>
-              ))}
+
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <Link href="/enroll" className="px-5 py-3 rounded-xl bg-white text-purple-800 font-semibold hover:opacity-90">
+                    Подобрать курс
+                  </Link>
+                  <a href="https://t.me/kodedavinchi86" target="_blank" className="px-5 py-3 rounded-xl border border-white/40 hover:bg-white/10" rel="noreferrer">
+                    TG‑канал
+                  </a>
+                  <a href="https://vk.com/kode_da_vinchi?from=groups" target="_blank" className="px-5 py-3 rounded-xl border border-white/40 hover:bg-white/10" rel="noreferrer">
+                    Мы во ВКонтакте
+                  </a>
+                </div>
+              </div>
+
+              {/* одна ключевая картинка — дети собирают роботов */}
+              <div className="relative">
+                <img
+                  src="/images/1.png"
+                  alt="Дети собирают роботов на занятиях KODE Да Винчи"
+                  className="rounded-2xl w-full h-auto object-cover shadow-2xl"
+                />
+                <div className="absolute -bottom-4 -left-4 px-3 py-2 rounded-xl bg-white/90 text-purple-900 text-sm shadow">
+                  🤖 Робототехника • офлайн
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Английский в конце модуля */}
-      <section id="english" className="max-w-6xl mx-auto px-4 py-10">
-        <div className="rounded-2xl border p-6 bg-white">
-          <div className="grid md:grid-cols-2 gap-6 items-center">
-            <div>
-              <h2 className="text-2xl md:text-3xl font-bold mb-3">Новинка: английский в конце каждого модуля</h2>
-              <p className="text-gray-700">
-                С <b>сентября</b> в каждой группе по завершении модуля проводим мини-уроки английского по тематике
-                курса (команды, интерфейсы, термины). Это помогает детям:
-              </p>
-              <ul className="mt-2 text-gray-700 list-disc list-inside space-y-1">
-                <li>свободнее ориентироваться в англоязычных интерфейсах (Roblox, Python-библиотеки и др.);</li>
-                <li>быстрее искать и понимать документацию и туториалы;</li>
-                <li>увереннее презентовать проект, используя простые технические фразы.</li>
-              </ul>
-            </div>
-            <div className="rounded-xl overflow-hidden bg-gray-50 border">
-              {/* Положи подходящую картинку сюда: /public/images/english.png */}
-              <img src="/images/english.png" alt="English + IT" className="w-full h-full object-cover" />
+        {/* Быстрый выбор возраста */}
+        <section className="max-w-6xl mx-auto px-4 py-10">
+          <h2 className="text-2xl font-extrabold mb-4">Выберите возраст</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { id: "3-6", label: "3–6 лет", emoji: "👶" },
+              { id: "7-10", label: "7–10 лет", emoji: "🧒" },
+              { id: "9-13", label: "9–13 лет", emoji: "🧑" },
+              { id: "14-17", label: "14–17 лет", emoji: "🎓" },
+            ].map((a) => (
+              <Link
+                key={a.id}
+                href={{ pathname: "/enroll", query: { age: a.id } }}
+                className={`rounded-2xl border p-5 hover:shadow-xl transition ${brand.ring} bg-white flex items-center justify-between`}
+              >
+                <div>
+                  <div className="text-lg font-semibold">{a.label}</div>
+                  <div className="text-sm text-gray-500">направления и курсы</div>
+                </div>
+                <div className={`text-2xl p-2 rounded-xl ${brand.grad} ${brand.accentText}`}>{a.emoji}</div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Направления (коротко) */}
+        <section className="max-w-6xl mx-auto px-4 py-8">
+          <h2 className="text-2xl font-extrabold mb-4">Направления</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <CardDir emoji="🎨" title="3D и творчество" items={["3D‑Мастер", "Digital Design Studio", "3D‑Инженер", "3D PRO", "Video Lab"]} />
+            <CardDir emoji="🤖" title="Робототехника" items={["Early Lab (для 3–6)", "Junior Robotics", "TechLab Robotics", "Robotics PRO"]} />
+            <CardDir emoji="💻" title="Программирование" items={["Scratch", "Minecraft с кодом", "2D Game Lab", "Mobile App Lab", "Roblox Studio", "Unity PRO", "Unreal PRO", "ИИ‑Разработчик"]} />
+          </div>
+          <div className="mt-4">
+            <Link href="/enroll" className="inline-block px-5 py-3 rounded-xl bg-gray-900 text-white hover:opacity-90">
+              Смотреть все курсы и программы
+            </Link>
+          </div>
+        </section>
+
+        {/* Новинка: английский */}
+        <section className="max-w-6xl mx-auto px-4 py-8">
+          <div className="rounded-2xl border p-6 md:p-8 bg-gradient-to-br from-yellow-50 to-white">
+            <div className="flex items-start gap-4">
+              <div className="text-3xl">🇬🇧</div>
+              <div>
+                <h3 className="text-xl font-bold">Новинка: английский язык</h3>
+                <p className="mt-2 text-gray-700">
+                  С сентября — в каждой группе <b>каждый 4‑й урок</b> месяца проходит как полноценный урок английского:
+                  лексика по теме модуля, разговорные задания и презентация проектов на английском.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Цифры */}
-      <section id="numbers" className="max-w-6xl mx-auto px-4 py-8">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">Цифры и факты</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <Num n="9 мес" t="длительность программ" />
-          <Num n="36" t="занятий по 2 часа" />
-          <Num n="10+" t="направлений и треков" />
-          <Num n="4 400 ₽" t="в месяц (ранняя цена)" />
-        </div>
-      </section>
-
-      {/* Фото-галерея */}
-      <section id="gallery" className="max-w-6xl mx-auto px-4 py-8">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">Наши занятия</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {GALLERY.map((src, i) => (
-            <div key={i} className="rounded-xl overflow-hidden aspect-[4/3] bg-gray-100">
-              <img src={src} alt={`Фото ${i + 1}`} className="w-full h-full object-cover" />
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="bg-gradient-to-br from-purple-700 via-purple-600 to-purple-800 text-white">
-        <div className="max-w-6xl mx-auto px-4 py-10 flex flex-col md:flex-row items-center gap-4 justify-between">
-          <div>
-            <h3 className="text-2xl font-bold">Готовы к старту? Набор открыт</h3>
-            <p className="text-white/90">Оставьте заявку — подберём группу и согласуем удобное расписание.</p>
-          </div>
-          <Link href="/enroll" className="px-5 py-3 rounded-md bg-yellow-300 text-purple-900 font-semibold hover:opacity-90">
-            Записаться на курс
-          </Link>
-        </div>
-      </section>
-
-      {/* Контакты */}
-      <section id="contacts" className="max-w-6xl mx-auto px-4 py-10">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">Контакты</h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="rounded-2xl border p-4">
-            <div className="font-semibold">KODE Да Винчи</div>
-            <div className="text-sm text-gray-600 mt-1">Офлайн-занятия 1–2 раза в неделю по 2 часа</div>
-            <div className="text-sm mt-3">
-              Тел.: <a className="underline" href={`tel:${SOCIALS.phoneHref}`}>{SOCIALS.phone}</a>
-            </div>
-            <div className="text-sm">
-              E-mail: <a className="underline" href={`mailto:${SOCIALS.email}`}>{SOCIALS.email}</a>
-            </div>
-            <div className="text-sm mt-3">Адрес: {SOCIALS.address}</div>
-            <div className="mt-3 flex flex-wrap gap-2">
-              <a href={SOCIALS.telegram} target="_blank" rel="noreferrer" className="px-4 py-2 rounded-md bg-gray-900 text-white hover:opacity-90">Telegram</a>
-              <a href={SOCIALS.vk} target="_blank" rel="noreferrer" className="px-4 py-2 rounded-md border hover:bg-gray-50">VK</a>
+        {/* Финансовая грамотность c мини-галереей купюр */}
+        <section className="max-w-6xl mx-auto px-4 py-8">
+          <div className="rounded-2xl border p-6 md:p-8 bg-white">
+            <div className="flex items-start gap-4">
+              <div className="text-3xl">💰</div>
+              <div className="flex-1">
+                <h3 className="text-xl font-bold">Финансовая грамотность: внутренняя валюта</h3>
+                <p className="mt-2 text-gray-700">
+                  За активность на занятиях и успехи в проектах дети получают «валюту школы». Её можно потратить
+                  в нашем TG‑магазине на технику, гаджеты и мерч.
+                </p>
+                <div className="mt-3 flex items-center gap-3">
+                  {["5.png", "10.png", "20.png", "50.png"].map((f) => (
+                    <img key={f} src={`/images/${f}`} alt={f.replace(".png","")} className="h-14 w-auto rounded-md border" />
+                  ))}
+                </div>
+                <a href="https://t.me/kodedavinchi86" target="_blank" rel="noreferrer" className="inline-block mt-3 px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-50">
+                  Открыть TG‑канал
+                </a>
+              </div>
             </div>
           </div>
-          <iframe
-            title="map"
-            src="https://yandex.ru/map-widget/v1/?um=constructor%3A30250fa1f02ea152e9871db556a514ec49d4bb55a21a1d7e8c3310a5c42d2802&source=constructor"
-            className="w-full h-[320px] rounded-2xl border"
-          />
-        </div>
-      </section>
+        </section>
 
-      {/* FOOTER */}
-      <footer className="bg-gray-50 border-t">
-        <div className="max-w-6xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-sm">
-          <div>© {new Date().getFullYear()} KODE Да Винчи</div>
-          <div className="text-gray-600">Старт занятий — с 13 сентября • офлайн 1–2 раза в неделю по 2 часа</div>
-          <Link href="/enroll" className="px-3 py-2 rounded-md bg-gray-900 text-white hover:opacity-90">Записаться</Link>
-        </div>
-      </footer>
-    </div>
+        {/* Галерея ваших фото: 1–8.png */}
+        <section className="max-w-6xl mx-auto px-4 py-8">
+          <h2 className="text-2xl font-extrabold mb-4">Как проходят занятия</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {[1,2,3,4,5,6,7,8].map((n) => (
+              <img key={n} src={`/images/${n}.png`} alt={`Галерея ${n}`} className="rounded-xl aspect-square object-cover" />
+            ))}
+          </div>
+        </section>
+
+        {/* Контакты */}
+        <section className={`${brand.grad} text-white`}>
+          <div className="max-w-6xl mx-auto px-4 py-10">
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="rounded-2xl bg-white/10 p-6 border border-white/20">
+                <div className="text-sm opacity-90">Телефон</div>
+                <a href="tel:+79825524496" className={`text-xl font-bold block mt-1 ${brand.accentText}`}>
+                  +7 (982) 552‑44‑96
+                </a>
+                <div className="mt-4 text-sm opacity-90">E‑mail</div>
+                <a href="mailto:tyshchenko05@inbox.ru" className="text-white underline">
+                  tyshchenko05@inbox.ru
+                </a>
+              </div>
+
+              <div className="rounded-2xl bg-white/10 p-6 border border-white/20">
+                <div className="text-sm opacity-90">Адрес</div>
+                <div className="text-lg mt-1">
+                  г. Пыть‑Ях, микрорайон 2, дом 10
+                  <div className="text-sm opacity-80">(вход со стороны дороги)</div>
+                </div>
+                <div className="mt-4 text-sm opacity-90">График</div>
+                <div className="text-sm opacity-90">1–2 раза в неделю по 2 часа</div>
+              </div>
+
+              <div className="rounded-2xl bg-white/10 p-6 border border-white/20">
+                <div className="text-sm opacity-90">Соцсети</div>
+                <div className="flex gap-3 mt-2">
+                  <a href="https://t.me/kodedavinchi86" target="_blank" rel="noreferrer" className="px-4 py-2 rounded-lg bg-white text-purple-800 font-semibold hover:opacity-90">
+                    Telegram
+                  </a>
+                  <a href="https://vk.com/kode_da_vinchi?from=groups" target="_blank" rel="noreferrer" className="px-4 py-2 rounded-lg bg-white text-purple-800 font-semibold hover:opacity-90">
+                    ВКонтакте
+                  </a>
+                </div>
+                <Link href="/enroll" className="inline-block mt-4 px-4 py-2 rounded-lg border border-white/40 hover:bg-white/10">
+                  Записаться на курс
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </>
   );
 }
 
-/* — Мелкие компоненты — */
-function Tile({ title, big, note, list }: { title: string; big?: string; note?: string; list?: string[] }) {
+/* карточка-направление */
+function CardDir({ emoji, title, items }: { emoji: string; title: string; items: string[] }) {
   return (
-    <div className="rounded-2xl bg-white/10 p-4 backdrop-blur-md border border-white/20">
-      <div className="text-sm opacity-90">{title}</div>
-      {big && <div className="text-2xl font-bold text-yellow-300">{big}</div>}
-      {note && <div className="text-xs opacity-80">{note}</div>}
-      {list && <ul className="text-sm mt-1 space-y-1">{list.map((li) => <li key={li}>• {li}</li>)}</ul>}
-    </div>
-  );
-}
-function Info({ title, text }: { title: string; text: string }) {
-  return (
-    <div className="rounded-2xl border p-4 bg-white hover:shadow-md transition">
-      <div className="font-semibold">{title}</div>
-      <div className="text-sm text-gray-600 mt-1">{text}</div>
-    </div>
-  );
-}
-function Track({ emoji, title, text }: { emoji: string; title: string; text: string }) {
-  return (
-    <div className="rounded-2xl border p-4 bg-white hover:shadow-xl transition">
+    <div className="rounded-2xl border p-5 bg-white hover:shadow-xl transition">
       <div className="flex items-center gap-3">
-        <div className="p-2 rounded-xl bg-gradient-to-br from-purple-700 via-purple-600 to-purple-800 text-yellow-300">{emoji}</div>
-        <div>
-          <div className="font-semibold">{title}</div>
-          <div className="text-sm text-gray-500">{text}</div>
-        </div>
+        <div className="text-2xl">{emoji}</div>
+        <div className="font-semibold">{title}</div>
       </div>
-      <Link href="/enroll" className="mt-3 inline-block px-3 py-2 rounded-md bg-gray-900 text-white hover:opacity-90">
-        Выбрать курс
+      <ul className="mt-3 text-sm text-gray-600 space-y-1 list-disc pl-6">
+        {items.map((i) => (
+          <li key={i}>{i}</li>
+        ))}
+      </ul>
+      <Link href="/enroll" className="mt-4 inline-block text-sm font-semibold underline">
+        Смотреть курсы →
       </Link>
-    </div>
-  );
-}
-function Num({ n, t }: { n: string; t: string }) {
-  return (
-    <div className="rounded-2xl border p-4 text-center bg-white">
-      <div className="text-2xl md:text-3xl font-extrabold text-purple-700">{n}</div>
-      <div className="text-sm text-gray-600">{t}</div>
     </div>
   );
 }
